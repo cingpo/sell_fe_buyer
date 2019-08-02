@@ -27,9 +27,9 @@
 			return {
 				selectedGoods: [],
 				seller: {},
-				name: '师兄',
-				phone: '18868877111',
-				address: '慕课网大楼'
+				name: '',
+				phone: '',
+				address: ''
 			};
 		},
 		computed: {
@@ -53,7 +53,9 @@
                 });
                 const ERR_OK = 0;
                 this.$http.post("/sell/buyer/order/create", {
-                    'openid': getCookie('openid'),
+                    //'openid': this.$route.params.openid ,
+		            'openid': getCookie('openid'),
+		            //'openid': document.cookie,
                     'phone': this.phone,
                     'name': this.name,
                     'address': this.address,
@@ -62,7 +64,7 @@
                     respones = respones.body;
                     if (respones.code == ERR_OK) {
                       location.href = config.wechatPayUrl +
-                        '?openid=' + getCookie('openid') +
+                        '?openid=oTgZpwQ9Tk0VS5l1XDe8EwABsVao' +
                         '&orderId=' + respones.data.orderId +
                         '&returnUrl=' + encodeURIComponent(config.sellUrl + '/#/order/' + respones.data.orderId);
                     }else {

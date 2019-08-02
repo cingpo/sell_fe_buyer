@@ -191,7 +191,9 @@
         }
         window.selectedGoods = JSON.stringify(this.selectFoods);
         window.sellerPay = JSON.stringify(this.seller);
-        window.location.href = '#/payment';
+       //document.cookie = 'openid=' + getCookie('openid');
+        window.location.href = '#/payment?openId='+getCookie('openid');
+        // window.location.href = '#/payment';
       },
       addFood(target) {
         this.drop(target);
@@ -237,6 +239,15 @@
       cartcontrol
     }
   };
+
+function getCookie(name) {
+      var arr;
+      var reg = new RegExp('(^| )' +name+"=([^;]*)(;|$)");
+      if(arr=document.cookie.match(reg))
+          return unescape(arr[2]);
+      else
+          return null;
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

@@ -83,6 +83,9 @@
            }
         },
         created() {
+            if(getCookie('openid') == null) {
+	      location.href = config.openidUrl + '?returnUrl=' +  encodeURIComponent(config.sellUrl + '/#/');
+	    }
             this.$http.get('/sell/buyer/order/detail', {
                 params: {
                     orderId: this.$route.params.orderId,
